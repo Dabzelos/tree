@@ -11,4 +11,8 @@ class AVLtree<K : Comparable<K>, V> : Tree<K, V, AVLnode<K, V>>() {
     override fun delete(key: K) {
         TODO("Not yet implemented")
     }
+
+    override fun createNode(key: K, value: V): AVLnode<K, V> {
+        return AVLnode(key, value)
+    }
 }
