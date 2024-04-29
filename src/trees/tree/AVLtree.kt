@@ -17,16 +17,17 @@ class AVLtree<K : Comparable<K>, V> : Tree<K, V, AVLnode<K, V>>() {
     }
 
     override fun balance(currentNode: AVLnode<K, V>?): AVLnode<K, V>? {
-        if (balanceFactor(currentNode)) {
+        if (balanceFactor(currentNode) = 1) {
+
         }
     }
 
-    private fun balanceFactor(currentNode: AVLnode<K, V>?): Int? {
-        return currentNode?.left?.height!! - currentNode?.right?.height!!
+    private fun balanceFactor(node: AVLnode<K, V>?): Int {
+        return (node?.left?.height ?: 0) - (node?.right?.height ?: 0)
     }
 
-    private fun fixBalance(currentNode: AVLnode<K, V>?): AVLnode<K, V>? {
-        TODO("Not yet implemented")
+    private fun fixHeight(currentNode: AVLnode<K, V>?) {
+        currentNode?.height = 1 + maxOf((currentNode?.left?.height ?: 0), (currentNode?.right?.height ?: 0))
     }
 
     private fun rightRotate(currentNode: AVLnode<K, V>?): AVLnode<K, V>? {
