@@ -22,7 +22,7 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
     abstract fun insert(key: K, value: V)
     abstract fun delete(key: K)
     abstract fun createNode(key: K, value: V): N
-
+    abstract fun balance(currentNode: N?): N?
 
     fun search(key: K): V? {
         return verticeSearch(key, root)?.value
@@ -42,7 +42,7 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
         if (currentNode.key > key) {
             currentNode.left = insertVertice(key, value, currentNode.left)
         }
-        return currentNode
+        return balance(currentNode)
     }
 
     protected fun verticeSearch(key: K, treeroot: N?): N? {

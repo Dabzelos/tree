@@ -19,4 +19,8 @@ class BStree<K : Comparable<K>, V> : Tree<K, V, BSNode<K, V>>() {
         return BSNode(key, value)
     }
 
+    override fun balance(currentNode: BSNode<K, V>?): BSNode<K, V>? {
+        return currentNode
+    }
+
 }
