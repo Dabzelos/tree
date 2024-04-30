@@ -91,7 +91,7 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
         }
 
         currentNode.left = deleteVertice(key, currentNode.left)
-        return currentNode
+        return balance(currentNode)
     }
 
 }
