@@ -1,6 +1,6 @@
-package trees.interfaces
+package interfaces
 
-import trees.nodes.BSNode
+import interfaces.Node
 
 
 /**

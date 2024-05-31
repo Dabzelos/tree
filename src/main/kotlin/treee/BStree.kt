@@ -1,8 +1,8 @@
-package trees.tree
 
-import trees.interfaces.Node
-import trees.interfaces.Tree
-import trees.nodes.BSNode
+package tree
+
+import interfaces.Tree
+import nodes.BSNode
 
 class BStree<K : Comparable<K>, V> : Tree<K, V, BSNode<K, V>>() {
 
