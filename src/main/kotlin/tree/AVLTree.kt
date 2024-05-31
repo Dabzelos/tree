@@ -1,6 +1,7 @@
 package tree
 
 import interfaces.Tree
+import iterator.inorderTraversalRecursive
 import nodes.AVLNode
 
 class AVLTree<K : Comparable<K>, V> : Tree<K, V, AVLNode<K, V>>() {
@@ -63,22 +64,5 @@ class AVLTree<K : Comparable<K>, V> : Tree<K, V, AVLNode<K, V>>() {
         fixHeight(temp)
         return temp
     }
-    override fun toString() = diagram(root)
-    private fun diagram(node: AVLNode<K, V>?,
-                        top: String = "",
-                        root: String = "",
-                        bottom: String = ""): String {
-        return node?.let {
-            if (node.left == null && node.right == null) {
-                "$root${node.key}\n"
-            } else {
-                diagram(node.right, "$top ", "$top┌──", "$top│ ") +
-                        root + "${node.key}\n" + diagram(node.left,
-                    "$bottom│ ", "$bottom└──", "$bottom ")
-            }
-        } ?: "${root}null\n"
-    }
-    override fun iterator(): Iterator<Pair<K, V>> {
-        TODO("Not yet implemented")
-    }
+
 }
