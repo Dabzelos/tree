@@ -13,7 +13,7 @@ import interfaces.Node
  *
  *
  */
-abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
+abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> : Iterable<Pair<K, V>> {
     /*
     * The root node of the tree
     */
@@ -68,14 +68,21 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
     protected fun deleteVertice(key: K, currentNode: N?): N? {
         if (currentNode == null) {
             return null
-        } else if (currentNode.key == key) {
-            if (currentNode.right == null && currentNode.left == null) {
-                return null
-            } else if (currentNode.right == null) {
-                return currentNode.left
-            } else if (currentNode.left == null) {
-                return currentNode.right
-            } else {
+        }
+        if (currentNode.key < key) {
+            currentNode.right = deleteVertice(key, currentNode.right)
+            return balance(currentNode)}
+        else if (currentNode.key > key) {
+            currentNode.left = deleteVertice(key, currentNode.left)
+            return balance(currentNode)}
+        else{
+            if (currentNode.right == null) {
+                return balance(currentNode.left)
+            }
+            else if (currentNode.left == null) {
+                return balance(currentNode.right)
+            }
+            else {
                 var nodeMinKey: N = findMinKey(currentNode.right)
                 var minkey = nodeMinKey.key
                 var minvalue = nodeMinKey.value
@@ -83,14 +90,7 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
                 currentNode.value = minvalue
                 currentNode.right = deleteVertice(minkey, currentNode.right)
             }
-
-
-        } else if (currentNode.key < key) {
-            currentNode.right = deleteVertice(key, currentNode.left)
-            return currentNode
         }
-
-        currentNode.left = deleteVertice(key, currentNode.left)
         return balance(currentNode)
     }
 

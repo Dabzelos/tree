@@ -1,9 +1,18 @@
-import tree.AVLtree
+import tree.AVLTree
 
 fun main() {
-    println("hello")
-    val tree = AVLtree<Int, Int>()
-    tree.insert(1, 100)
-    tree.insert(2, 200)
-    println(tree)
+
+    val tree = AVLTree<Int, String>()
+    tree.insert(3, "A")
+    tree.insert(1, "B")
+    tree.insert(7, "C")
+    tree.insert(5, "D")
+    tree.insert(6, "E")
+
+    println(tree.toString())
+    tree.delete(6)
+    println(tree.root?.right?.left?.key)
+
+    println(tree.toString())
+
 }
