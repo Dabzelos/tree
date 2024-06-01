@@ -1,7 +1,6 @@
 
 package trees
 
-import nodes.AVLNode
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import tree.AVLTree
@@ -130,8 +129,8 @@ class AVLTreeTest {
         tree.delete(6)
 
         println(tree)
-        assertEquals(7, tree?.root?.right?.key)
-        assertEquals(5, tree?.root?.right?.left?.key)
+        assertEquals(7, tree.root?.right?.key)
+        assertEquals(5, tree.root?.right?.left?.key)
     }
 
 
