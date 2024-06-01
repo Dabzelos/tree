@@ -1,3 +1,4 @@
+import iterator.inorderTraversalRecursive
 import tree.AVLTree
 
 fun main() {
@@ -8,11 +9,11 @@ fun main() {
     tree.insert(7, "C")
     tree.insert(5, "D")
     tree.insert(6, "E")
-
-    println(tree.toString())
+    inorderTraversalRecursive(tree.root)
+    /*println(tree.toString())
     tree.delete(6)
     println(tree.root?.right?.left?.key)
 
-    println(tree.toString())
+    println(tree.toString())*/
 
 }

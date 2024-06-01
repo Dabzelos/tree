@@ -1,6 +1,7 @@
 package interfaces
 
 import interfaces.Node
+import iterator.inorderTraversalRecursive
 
 
 /**
@@ -13,7 +14,7 @@ import interfaces.Node
  *
  *
  */
-abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> : Iterable<Pair<K, V>> {
+abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
     /*
     * The root node of the tree
     */
@@ -71,18 +72,16 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> : Iterable<Pair<K, 
         }
         if (currentNode.key < key) {
             currentNode.right = deleteVertice(key, currentNode.right)
-            return balance(currentNode)}
-        else if (currentNode.key > key) {
+            return balance(currentNode)
+        } else if (currentNode.key > key) {
             currentNode.left = deleteVertice(key, currentNode.left)
-            return balance(currentNode)}
-        else{
+            return balance(currentNode)
+        } else {
             if (currentNode.right == null) {
                 return balance(currentNode.left)
-            }
-            else if (currentNode.left == null) {
+            } else if (currentNode.left == null) {
                 return balance(currentNode.right)
-            }
-            else {
+            } else {
                 var nodeMinKey: N = findMinKey(currentNode.right)
                 var minkey = nodeMinKey.key
                 var minvalue = nodeMinKey.value
@@ -92,6 +91,10 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> : Iterable<Pair<K, 
             }
         }
         return balance(currentNode)
+    }
+
+    fun iterator() {
+        return inorderTraversalRecursive(root)
     }
 
 }

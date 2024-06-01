@@ -23,8 +23,6 @@ class BSTree<K : Comparable<K>, V> : Tree<K, V, BSNode<K, V>>() {
         return currentNode
     }
 
-    override fun iterator(): Iterator<Pair<K, V>> {
-        TODO("Not yet implemented")
-    }
+
 
 }
