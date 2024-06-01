@@ -10,10 +10,5 @@ fun main() {
     tree.insert(5, "D")
     tree.insert(6, "E")
     inorderTraversalRecursive(tree.root)
-    /*println(tree.toString())
-    tree.delete(6)
-    println(tree.root?.right?.left?.key)
-
-    println(tree.toString())*/
 
 }
