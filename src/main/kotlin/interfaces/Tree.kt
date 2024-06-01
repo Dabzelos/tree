@@ -44,19 +44,19 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
         return balance(currentNode)
     }
 
-    protected fun verticeSearch(key: K, treeroot: N?): N? {
-        if (treeroot == null) {
-            return null
+    private fun verticeSearch(key: K, treeroot: N?): N? {
+        return if (treeroot == null) {
+            null
         } else if (key < treeroot.key) {
-            return verticeSearch(key, treeroot.left)
+            verticeSearch(key, treeroot.left)
         } else if (key > treeroot.key) {
-            return verticeSearch(key, treeroot.right)
+            verticeSearch(key, treeroot.right)
         } else {
-            return treeroot
+            treeroot
         }
     }
 
-    protected fun findMinKey(node: N?): N {
+    private fun findMinKey(node: N?): N {
         return if (node?.left == null) {
             node!!
         } else {
@@ -80,9 +80,9 @@ abstract class Tree<K : Comparable<K>, V, N : Node<K, V, N>> {
             } else if (currentNode.left == null) {
                 return balance(currentNode.right)
             } else {
-                var nodeMinKey: N = findMinKey(currentNode.right)
-                var minkey = nodeMinKey.key
-                var minvalue = nodeMinKey.value
+                val nodeMinKey: N = findMinKey(currentNode.right)
+                val minkey = nodeMinKey.key
+                val minvalue = nodeMinKey.value
                 currentNode.key = minkey
                 currentNode.value = minvalue
                 currentNode.right = deleteVertice(minkey, currentNode.right)

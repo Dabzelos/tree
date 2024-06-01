@@ -1,7 +1,6 @@
 package tree
 
 import interfaces.Tree
-import iterator.inorderTraversalRecursive
 import nodes.AVLNode
 
 class AVLTree<K : Comparable<K>, V> : Tree<K, V, AVLNode<K, V>>() {
@@ -20,9 +19,9 @@ class AVLTree<K : Comparable<K>, V> : Tree<K, V, AVLNode<K, V>>() {
     override fun balance(currentNode: AVLNode<K, V>?): AVLNode<K, V>? {
         if (currentNode == null) return null
 
-        var bf = balanceFactor(currentNode)
+        val bf = balanceFactor(currentNode)
         if (bf > 1) {
-            if (balanceFactor(currentNode?.left) < 0) {
+            if (balanceFactor(currentNode.left) < 0) {
                 currentNode.left = leftRotate(currentNode.left)
             }
             return rightRotate(currentNode)

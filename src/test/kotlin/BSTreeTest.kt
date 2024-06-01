@@ -1,8 +1,5 @@
 package trees
 
-
-import nodes.AVLNode
-import nodes.BSNode
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import tree.BSTree
